@@ -1,0 +1,36 @@
+\usepackage[fontsize=14pt]{scrextend}
+\usepackage[sfdefault]{FiraSans}
+\usepackage{FiraMono}
+\usepackage{hyperref}
+\geometry{top=0.75in,left=0.5in,bottom=0.5in,right=0.5in}
+\twocolumn
+
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[table]{xcolor}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{calc}
+\usepackage{longtable}
+\usepackage{color}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+   \pagestyle{fancy}
+   \fancyhead[L]{Loosely Covered}
+   \fancyhead[C]{Page \thepage\ of \pageref{LastPage}}
+   \fancyhead[R]{\today}
+   \fancyfoot[L]{}
+   \fancyfoot[C]{}
+   \fancyfoot[R]{}
+\let\paragraph\oldparagraph
+\let\subparagraph\oldsubparagraph
+\usepackage{titlesec}
+\titlespacing*{\section}      {0em}{.75em}{.5em}
+\titlespacing*{\subsection}   {0em}{.50em}{.25em}
+\titlespacing*{\subsubsection}{0em}{.15em}{0em}
+\titlespacing*{\paragraph}    {0em}{.15em}{0em}
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}

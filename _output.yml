@@ -1,0 +1,6 @@
+bookdown::pdf_document2:
+  includes:
+    in_header: preamble.tex
+    before_body: cover2.tex
+  latex_engine: xelatex
+  number_sections: FALSE
