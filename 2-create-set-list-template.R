@@ -12,7 +12,7 @@ library(huxtable)
 set_lists <- gs_title("LC Gigs Set Lists")
 
 # connect to gig-specific tab in that workbook
-gig_name <- "2017-06 Jack London"
+gig_name <- "20171102 Nicholson"
 set_list <- set_lists %>% gs_read(ws = gig_name) %>%
   mutate( Artist = str_replace_all(Artist, "/", "-") ) %>%
   mutate( Artist = str_replace_all(Artist, "’" , "") ) %>%
@@ -32,16 +32,15 @@ set_list <- set_lists %>% gs_read(ws = gig_name) %>%
 
 # create RMarkdown file for gig-specific Lead Sheets
 
-cover <- set_list %>% select(Title, Singer, Group) %>%
-  as_hux() %>%
-  huxtable::add_colnames() %>%
-  set_bold(1, 1:3, TRUE) %>% 
-  set_bottom_border(1, 1:3, 1) %>% 
-  set_number_format(0)
-cover <- set_font_size(cover, 2) 
-cover2 <- cover %>% to_latex
-write(cover2, file = "cover2.tex")
-
+cover <- set_list %>%
+  select(Title) %>%
+  mutate(Title = str_trunc(Title, 20, "right")) %>% 
+  as_hux()
+cover <- set_font_size(cover, 24) 
+cover2 <- cover %>% to_latex()
+write("\\twocolumn", file = "cover2.tex")
+write(cover2, file = "cover2.tex", append = TRUE)
+# write("\\twocolumn", file = "cover2.tex", append = TRUE)
  
 # set_background_color( where( (cover$Group %% 2) == 0 ), grey(0.95) ) %>% 
 
@@ -57,5 +56,3 @@ write(songs, file = "_bookdown.yml", append = TRUE)
 outputs <- paste0('\n]\n',
                  'output_dir: docs')
 write(outputs, file = "_bookdown.yml", append = TRUE)
-
-
